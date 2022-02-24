@@ -2,6 +2,17 @@
 
 int main()
 {
-    printf("Hello, World");
+    FILE* fp;
+    char name[] = "input.txt";
+    if ((fp = fopen(name, "r")) == NULL) {
+        printf("Error: Can't open input.txt file");
+        getchar();
+    } else {
+        printf("File was opened successfully");
+    }
+
+    fclose(fp);
+    getchar();
+
     return 0;
 }
