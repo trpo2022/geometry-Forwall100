@@ -1,18 +1,22 @@
+#include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main()
 {
-    FILE* fp;
-    char name[] = "input.txt";
-    if ((fp = fopen(name, "r")) == NULL) {
-        printf("Error: Can't open input.txt file");
-        getchar();
-    } else {
-        printf("File was opened successfully");
+    FILE* input;
+    input = fopen("input.txt", "r");
+
+    struct point {
+        float x, y;
+    };
+
+    char str[50];
+    while (fgets(str, 50, input) != NULL) {
+        printf("%s", str);
     }
 
-    fclose(fp);
-    getchar();
-
+    fclose(input);
     return 0;
 }
