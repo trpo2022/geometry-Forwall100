@@ -29,5 +29,5 @@ int main()
         string output = "";
 
         return 0;
-    }
+    }OSHIBKA AAAAAAAAAAAAAAA
 }
