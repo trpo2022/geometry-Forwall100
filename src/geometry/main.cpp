@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string>
 
-#include "../geometry_lib/check_figure.hpp"
-#include "../geometry_lib/print_circle.hpp"
-#include "../geometry_lib/print_triangle.hpp"
+#include <geometry_lib/check_figure.hpp>
+#include <geometry_lib/print_circle.hpp>
+#include <geometry_lib/print_triangle.hpp>
 
 using namespace std;
 

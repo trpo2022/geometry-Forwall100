@@ -4,6 +4,7 @@ APP_NAME = geometry
 LIB_NAME = geometry_lib
 
 CFLAGS = -Wall -Wextra -lstdc++
+CPPFLAGS = -I src -MP -MMD
 
 APP_PATH = bin/$(APP_NAME)
 LIB_PATH = obj/src/$(LIB_NAME)/$(LIB_NAME).a
@@ -18,13 +19,13 @@ LIB_OBJECTS = $(LIB_SOURCES:src/%.cpp=obj/src/%.o)
 all: $(APP_PATH)
 
 $(APP_PATH): $(APP_OBJECTS) $(LIB_PATH)
-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 
 $(LIB_PATH): $(LIB_OBJECTS)
 	ar rcs $@ $^
 
 obj/%.o: %.cpp
-	$(CC) -c $(CFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 .PHONY: clean
 clean:
