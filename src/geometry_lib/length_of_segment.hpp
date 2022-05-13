@@ -1,3 +1,3 @@
 #pragma once
 
-double length_of_segment(int x1, int x2, int y1, int y2);
+double length_of_segment(double x1, double x2, double y1, double y2);
