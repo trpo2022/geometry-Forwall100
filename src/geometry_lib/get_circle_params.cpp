@@ -6,7 +6,7 @@ vector<double> get_circle_params(string input)
     vector<double> circle_params;
     for (int i = 0; i < (int)input.length() - 1; i++) {
         if (check_separator(input[i])) {
-            i++;
+            continue;
         } else {
             int k = 0;
             string slice = "";
