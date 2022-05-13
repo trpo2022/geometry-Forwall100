@@ -1,24 +1,38 @@
 #include "get_triangle_params.hpp"
 #include "length_of_segment.hpp"
+#include "triangle_area.hpp"
+#include "triangle_perimeter.hpp"
 #include <iostream>
 #include <math.h>
 
 using namespace std;
 
-void print_triangle(string line)
+void print_triangle(vector<vector<double>> triangles)
 {
-    vector<double> params = get_triangle_params(line);
-    double a = length_of_segment(params[0], params[1], params[2], params[3]),
-           b = length_of_segment(params[2], params[3], params[4], params[5]),
-           c = length_of_segment(params[4], params[5], params[0], params[1]),
-           perimeter = a + b + c, semiperimeter = perimeter / 2,
-           area
-            = sqrt(semiperimeter * (semiperimeter - a) * (semiperimeter - b)
-                   * (semiperimeter - c));
+    for (int i = 0; i < triangles.size(); i++) {
+        double a = length_of_segment(
+                       triangles[i][0],
+                       triangles[i][1],
+                       triangles[i][2],
+                       triangles[i][3]),
+               b = length_of_segment(
+                       triangles[i][2],
+                       triangles[i][3],
+                       triangles[i][4],
+                       triangles[i][5]),
+               c = length_of_segment(
+                       triangles[i][4],
+                       triangles[i][5],
+                       triangles[i][0],
+                       triangles[i][1]);
+        double perimeter = triangle_perimeter(a, b, c),
+               area = triangle_area(a, b, c, perimeter);
 
-    cout << "triangle((" << params[0] << " " << params[1] << ", " << params[2]
-         << " " << params[3] << ", " << params[4] << " " << params[5] << ", "
-         << params[6] << " " << params[7] << "))\n";
-    cout << "\tperimeter = " << perimeter << "\n"
-         << "\tarea = " << area << "\n";
+        cout << "triangle((" << triangles[i][0] << " " << triangles[i][1]
+             << ", " << triangles[i][2] << " " << triangles[i][3] << ", "
+             << triangles[i][4] << " " << triangles[i][5] << ", "
+             << triangles[i][6] << " " << triangles[i][7] << "))\n";
+        cout << "\tperimeter = " << perimeter << "\n"
+             << "\tarea = " << area << "\n";
+    }
 }
